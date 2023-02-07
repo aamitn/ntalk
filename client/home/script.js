@@ -1,6 +1,11 @@
 let voiceReply = false;
 document.getElementById('link').onclick = function() {
     const inputValue = document.getElementById('inputValue').value;
+	if(inputValue == "")
+	{
+		alert("NULL");
+		return;
+	}
     window.location.href = '/index.html?value=' + inputValue;
   }
 
@@ -157,6 +162,14 @@ function handleResize() {
   }
 
 }
+
+  function validateForm() {
+    var a = document.forms["Form"]["prompt"].value;
+    if (a == null || a == "") {
+      alert("Please Fill All Required Field");
+      return false;
+    }
+  }
 
 window.addEventListener("resize", handleResize);
 

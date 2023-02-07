@@ -310,6 +310,13 @@ button {
 
 }
 
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: DarkSalmon;
+  color: white;
+}
+
 @media (max-width: 1260px) { 
   .popup-content {
     background-color: #1A1A1A;

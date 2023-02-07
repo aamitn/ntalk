@@ -103,15 +103,15 @@ document.getElementById('close__btn').onclick = function () {
 }
 
 function loader(element) {
-  element.textContent = ''
+  element.textContent = 'Loading'
 
   loadInterval = setInterval(() => {
     // Update the text content of the loading indicator
     element.textContent += '.';
 
     // If the loading indicator has reached three dots, reset it
-    if (element.textContent === '....') {
-      element.textContent = '';
+    if (element.textContent === 'Loading....') {
+      element.textContent = 'Loading';
     }
   }, 300);
 }
@@ -157,9 +157,10 @@ function chatSripe(isAi, value, uniqueId) {
     </div>
     <div class="msgbg ${isAi && 'ai'}">
     <div class="message" id=${uniqueId}>${value}</div>
+	<div class = "showinfo"><br>ID:${uniqueId}</div>
     </div>
     </div>
-    </div>
+    </div>  
     </div>
     `
   )
@@ -185,7 +186,13 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   const data = new FormData(form);
-
+	
+	if (data.get('prompt')== "")
+	{
+		alert("Please Fill All Required Field");
+		counter = 0;
+		return;
+	}
 
   printInput(data.get('prompt'));
 
@@ -201,7 +208,7 @@ const handle = async () => {
 
   const messageDiv = document.getElementById(uniqueId);
   loader(messageDiv);
-  const response = await fetch('https://webster.onrender.com/', {
+  const response = await fetch('https://ntalk.onrender.com/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -288,7 +295,7 @@ async function translateNew(messageDiv, parsedData) {
   sourceText += " \n ";
   sourceText += parsedData;
 
-  const response = await fetch('https://webster.onrender.com/', {
+  const response = await fetch('https://ntalk.onrender.com', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
