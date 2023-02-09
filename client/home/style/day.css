@@ -45,6 +45,16 @@ body {
   margin-top: 20px;
 }
 
+#footer {
+	background:yellow;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+	text-align: center;
+	color: blue;
+}
+
+
 #titleName {
   font-family: 'Pacifico', cursive;
   color: #343749;

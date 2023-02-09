@@ -52,6 +52,16 @@ body {
   font-weight: 100;
 }
 
+#footer {
+	background:yellow;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+	text-align: center;
+	color: blue;
+}
+
+
 .centered-div {
   position: absolute;
   top: 50%;
