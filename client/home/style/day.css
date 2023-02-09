@@ -153,15 +153,14 @@ button {
   display: flex;
   align-items: center;
   margin: auto;
-  border-radius: 5px;
+  border-radius: 25px;
   outline: none;
   border: 1px solid black;
   height: 3.5em;
 }
 
 .searchText:hover {
-  background-color: gray;
-  color : white;
+  background-color: #b3b1ab;
   display: block;
   width: 70%;
   padding: 20px;
@@ -169,8 +168,6 @@ button {
   display: flex;
   align-items: center;
   margin: auto;
-  border-radius: 5px;
-  outline: none;
   border: 1px solid black;
   height: 3.5em;
 }
