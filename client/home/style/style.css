@@ -200,7 +200,9 @@ button {
   justify-content: flex-end;
 }
 
-
+.voicelang{
+	border : 1px solid black;
+}
 #toggle-switch {
   width: 55px;
   height: 30px;

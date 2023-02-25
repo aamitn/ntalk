@@ -15,6 +15,7 @@
         location.reload();
       }
     </script>
+
   </head>
   <body>
     <div class="sticky">
@@ -274,31 +275,372 @@
   </div>
     <div id="app" class="centered-div">
       <h1 id="titleName">nTalk</h1>
+	        <h1 id="titleTag">Tired of browsing? Ask nTalk</h1>
+<br>
+	  <center>
+	  <div id="info">
+  <p id="info_start">Click on the microphone icon and begin speaking to initiate Voice Search</p>
+  <p id="info_speak_now">Speak now, Click the ear icon to search</p>
+  <p id="info_no_speech">No speech was detected. You may need to adjust your
+    <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
+      microphone settings</a>.</p>
+  <p id="info_no_microphone" style="display:none">
+    No microphone was found. Ensure that a microphone is installed and that
+    <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
+    microphone settings</a> are configured correctly.</p>
+  <p id="info_allow">Click the "Allow" button above to enable your microphone.</p>
+  <p id="info_denied">Permission to use microphone was denied.</p>
+  <p id="info_blocked">Permission to use microphone is blocked. To change,
+    go to chrome://settings/contentExceptions#media-stream</p>
+  <p id="info_upgrade">Web Speech API is not supported by this browser.
+     Upgrade to <a href="//www.google.com/chrome">Chrome</a>
+     version 25 or later.</p>
+</div>
+	  </center>
+	          <button id="start_button1" onclick="startButton(event)"> </button>
+         
       <div class="searchText">
         <input type="text" class="search" id="inputValue" required placeholder="Ask me anything..."/>
         <a id="link">
           <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" fill="#dcdcdc" data-name="Layer 1" viewBox="0 0 24 24" width="24" height="24"><path d="M5.521,19.9h5.322l3.519,3.515a2.035,2.035,0,0,0,1.443.6,2.1,2.1,0,0,0,.523-.067,2.026,2.026,0,0,0,1.454-1.414L23.989,1.425Z"/><path d="M4.087,18.5,22.572.012,1.478,6.233a2.048,2.048,0,0,0-.886,3.42l3.495,3.492Z"/></svg>
         </a>
-          <button id="button" type="submit"><svg xmlns="http://www.w3.org/2000/svg" id="Bold"  fill="#dcdcdc" viewBox="0 0 24 24" width="24" height="24"><path d="M12,19a7.008,7.008,0,0,0,7-7V7A7,7,0,0,0,5,7v5A7.008,7.008,0,0,0,12,19ZM12,3a4,4,0,0,1,4,4V8H14.5a1.5,1.5,0,0,0,0,3H16v1a4,4,0,0,1-8,0V11H9.5a1.5,1.5,0,0,0,0-3H8V7A4,4,0,0,1,12,3Z"/><path d="M22.5,11.5A1.5,1.5,0,0,0,21,13v.389A7.62,7.62,0,0,1,13.389,21H10.611A7.621,7.621,0,0,1,3,13.389V13a1.5,1.5,0,0,0-3,0v.389A10.623,10.623,0,0,0,10.611,24h2.778A10.623,10.623,0,0,0,24,13.389V13A1.5,1.5,0,0,0,22.5,11.5Z"/></svg>
-          </button>
+       <a id="start_button" onclick="startButton(event)">
+		  <img id="start_img" src="mic.gif" alt="Start Voice" width="40" height="40"></button>
+        </a>
+      </div><br>
+<center>	  
 
-      </div>
-      <h1 id="titleTag">Tired of browsing? Ask nTalk</h1>
+<div style ="border:1px solid black; display:inline-block; margin:10px; padding:10px; border-radius:25px;">
+	Voice Launch Mode:
+	
+	<label class="container">Auto
+     <input type="radio" checked="checked" name="radio" id ="auto">
+     <span class="checkmark"></span>
+	</label>
+	
+	<label class="container">PTT
+     <input type="radio" checked="checked" name="radio" id ="ptt">
+     <span class="checkmark"></span>
+	</label>
+	
+	<label class="container">Manual
+     <input type="radio" checked="checked" name="radio" id ="manual">
+     <span class="checkmark"></span>
+	</label>
 
+</div>
+</center>	 
 		  
 	<br>
 	<center>
+	<button class = "button button2" id="searchlink">Search </button>
+	<br>
 	<button class = "button button1" onclick="location.href = 'https://images.enempl.com';">Create Images </button>
 	<button class = "button button1">Create Music </button>
-	</center>
+	<br>
+	<div  id="div_language" style="border:1px solid black;border-radius:25px;display:inline-block;margin: 10px; padding:10px;">
+	<h4>Voice Search Localization</h4>
+	<div>  <label for="langs"> Language:</label> <select name="langs" id="select_language" onchange="updateCountry()"></select></div>
+	<div> <label for="cars"> Dialect:</label> <select id="select_dialect"></select></div>
+	</div>
+</center>
+	</div>
 
-    </div>
-     
-    </div>
-<div id="footer">Developed by Nandi Mechatronics Pvt. Ltd.</div>
+	<div id="footer">Developed by Nandi Mechatronics Pvt. Ltd.</div>
     <script type="module" src="script.js"></script>
 	
+
+<script>
+var langs =
+[['Afrikaans',       ['af-ZA']],
+ ['Bahasa Indonesia',['id-ID']],
+ ['Bahasa Melayu',   ['ms-MY']],
+ ['Català',          ['ca-ES']],
+ ['Čeština',         ['cs-CZ']],
+ ['Deutsch',         ['de-DE']],
+ ['English',         ['en-AU', 'Australia'],
+                     ['en-CA', 'Canada'],
+                     ['en-IN', 'India'],
+                     ['en-NZ', 'New Zealand'],
+                     ['en-ZA', 'South Africa'],
+                     ['en-GB', 'United Kingdom'],
+                     ['en-US', 'United States']],
+ ['Español',         ['es-AR', 'Argentina'],
+                     ['es-BO', 'Bolivia'],
+                     ['es-CL', 'Chile'],
+                     ['es-CO', 'Colombia'],
+                     ['es-CR', 'Costa Rica'],
+                     ['es-EC', 'Ecuador'],
+                     ['es-SV', 'El Salvador'],
+                     ['es-ES', 'España'],
+                     ['es-US', 'Estados Unidos'],
+                     ['es-GT', 'Guatemala'],
+                     ['es-HN', 'Honduras'],
+                     ['es-MX', 'México'],
+                     ['es-NI', 'Nicaragua'],
+                     ['es-PA', 'Panamá'],
+                     ['es-PY', 'Paraguay'],
+                     ['es-PE', 'Perú'],
+                     ['es-PR', 'Puerto Rico'],
+                     ['es-DO', 'República Dominicana'],
+                     ['es-UY', 'Uruguay'],
+                     ['es-VE', 'Venezuela']],
+ ['Euskara',         ['eu-ES']],
+ ['Français',        ['fr-FR']],
+ ['Galego',          ['gl-ES']],
+ ['Hrvatski',        ['hr_HR']],
+ ['IsiZulu',         ['zu-ZA']],
+ ['Íslenska',        ['is-IS']],
+ ['Italiano',        ['it-IT', 'Italia'],
+                     ['it-CH', 'Svizzera']],
+ ['Magyar',          ['hu-HU']],
+ ['Nederlands',      ['nl-NL']],
+ ['Norsk bokmål',    ['nb-NO']],
+ ['Polski',          ['pl-PL']],
+ ['Português',       ['pt-BR', 'Brasil'],
+                     ['pt-PT', 'Portugal']],
+ ['Română',          ['ro-RO']],
+ ['Slovenčina',      ['sk-SK']],
+ ['Suomi',           ['fi-FI']],
+ ['Svenska',         ['sv-SE']],
+ ['Türkçe',          ['tr-TR']],
+ ['български',       ['bg-BG']],
+ ['Pусский',         ['ru-RU']],
+ ['Српски',          ['sr-RS']],
+ ['한국어',            ['ko-KR']],
+ ['中文',             ['cmn-Hans-CN', '普通话 (中国大陆)'],
+                     ['cmn-Hans-HK', '普通话 (香港)'],
+                     ['cmn-Hant-TW', '中文 (台灣)'],
+                     ['yue-Hant-HK', '粵語 (香港)']],
+ ['日本語',           ['ja-JP']],
+ ['Lingua latīna',   ['la']]];
+var autoLaunch = false;
+var pttLaunch = false;
+
+for (var i = 0; i < langs.length; i++) {
+  select_language.options[i] = new Option(langs[i][0], i);
+}
+select_language.selectedIndex = 6;
+updateCountry();
+select_dialect.selectedIndex = 6;
+showInfo('info_start');
+
+function updateCountry() {
+  for (var i = select_dialect.options.length - 1; i >= 0; i--) {
+    select_dialect.remove(i);
+  }
+  var list = langs[select_language.selectedIndex];
+  for (var i = 1; i < list.length; i++) {
+    select_dialect.options.add(new Option(list[i][1], list[i][0]));
+  }
+  select_dialect.style.visibility = list[1].length == 1 ? 'hidden' : 'visible';
+}
+ 
+		function radioCheck() {    
+            if(document.getElementById('auto').checked) 
+			{   
+				autoLaunch = true;
+			  pttLaunch = false;
+            }   
+            else if(document.getElementById('ptt').checked) 
+			{   
+				autoLaunch = false;
+			  pttLaunch = true;
+            }   
+            else if(document.getElementById('manual').checked)
+			{   
+			autoLaunch = false;
+			  pttLaunch = false;
+            }    
+        }     
+
+var create_email = false;
+var final_transcript = '';
+var recognizing = false;
+var ignore_onend;
+var start_timestamp;
+if (!('webkitSpeechRecognition' in window)) {
+  upgrade();
+} else {
+  start_button.style.display = 'inline-block';
+  var recognition = new webkitSpeechRecognition();
+  recognition.continuous = true;
+  recognition.interimResults = true;
+
+  recognition.onstart = function() {
+    recognizing = true;
+    showInfo('info_speak_now');
+    start_img.src = 'mic-animate.gif';
+  };
+
+  recognition.onerror = function(event) {
+    if (event.error == 'no-speech') {
+      start_img.src = 'mic.gif';
+      showInfo('info_no_speech');
+      ignore_onend = true;
+    }
+    if (event.error == 'audio-capture') {
+      start_img.src = 'mic.gif';
+      showInfo('info_no_microphone');
+      ignore_onend = true;
+    }
+    if (event.error == 'not-allowed') {
+      if (event.timeStamp - start_timestamp < 100) {
+        showInfo('info_blocked');
+      } else {
+        showInfo('info_denied');
+      }
+      ignore_onend = true;
+    }
+  };
+
+  recognition.onend = function() {
+    recognizing = false;
+    if (ignore_onend) {
+      return;
+    }
+    start_img.src = 'mic.gif';
 	
+    if (!final_transcript) {
+      showInfo('info_start');
+      return;
+    }
+    showInfo('');
+	radioCheck();
+	 if (pttLaunch == true) 
+	 {
+	   var ivalue = document.getElementById('inputValue').value;
+	   if (ivalue)
+		window.location.href = '/index.html?value=' + ivalue;
+	 }
+	
+    if (create_email) {
+      create_email = false;
+      createEmail();
+    }
+  };
+
+  recognition.onresult = function(event) {
+    var interim_transcript = '';
+    for (var i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+        final_transcript += event.results[i][0].transcript;
+      } else {
+        interim_transcript += event.results[i][0].transcript;
+      }
+    }
+    final_transcript = capitalize(final_transcript);
+	
+   // final_span.innerHTML = linebreak(final_transcript);
+   // interim_span.innerHTML = linebreak(interim_transcript);
+
+    document.getElementById("inputValue").value = linebreak(interim_transcript);
+	document.getElementById("inputValue").value = linebreak(final_transcript);
+	radioCheck();
+	if (autoLaunch == true)
+	{
+		var ivalue = document.getElementById('inputValue').value;
+		if (ivalue)
+		 window.location.href = '/index.html?value=' + ivalue;
+    }
+	
+    if (final_transcript || interim_transcript) {
+      showButtons('inline-block');
+    }
+  };
+}
+
+function upgrade() {
+  start_button.style.visibility = 'hidden';
+  showInfo('info_upgrade');
+}
+
+var two_line = /\n\n/g;
+var one_line = /\n/g;
+function linebreak(s) {
+  return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
+}
+
+var first_char = /\S/;
+function capitalize(s) {
+  return s.replace(first_char, function(m) { return m.toUpperCase(); });
+}
+
+function createEmail() {
+  var n = final_transcript.indexOf('\n');
+  if (n < 0 || n >= 80) {
+    n = 40 + final_transcript.substring(40).indexOf(' ');
+  }
+  var subject = encodeURI(final_transcript.substring(0, n));
+  var body = encodeURI(final_transcript.substring(n + 1));
+  window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+}
+
+function copyButton() {
+  if (recognizing) {
+    recognizing = false;
+    recognition.stop();
+  }
+  copy_button.style.display = 'none';
+  copy_info.style.display = 'inline-block';
+  showInfo('');
+}
+
+function emailButton() {
+  if (recognizing) {
+    create_email = true;
+    recognizing = false;
+    recognition.stop();
+  } else {
+    createEmail();
+  }
+  email_button.style.display = 'none';
+  email_info.style.display = 'inline-block';
+  showInfo('');
+}
+
+function startButton(event) {
+  if (recognizing) {
+    recognition.stop();
+    return;
+  }
+  final_transcript = '';
+  recognition.lang = select_dialect.value;
+  recognition.start();
+  ignore_onend = false;
+  final_span.innerHTML = '';
+  interim_span.innerHTML = '';
+  start_img.src = 'mic-slash.gif';
+  showInfo('info_allow');
+  showButtons('none');
+  start_timestamp = event.timeStamp;
+}
+
+function showInfo(s) {
+  if (s) {
+    for (var child = info.firstChild; child; child = child.nextSibling) {
+      if (child.style) {
+        child.style.display = child.id == s ? 'inline' : 'none';
+      }
+    }
+    info.style.visibility = 'visible';
+  } else {
+    info.style.visibility = 'hidden';
+  }
+}
+
+var current_style;
+function showButtons(style) {
+  if (style == current_style) {
+    return;
+  }
+  current_style = style;
+  copy_button.style.display = style;
+  email_button.style.display = style;
+  copy_info.style.display = 'none';
+  email_info.style.display = 'none';
+}
+</script>
   </body>
  
 </html>

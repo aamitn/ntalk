@@ -3,12 +3,20 @@ document.getElementById('link').onclick = function() {
     const inputValue = document.getElementById('inputValue').value;
 	if(inputValue == "")
 	{
-		alert("NULL");
+		alert("Empty Input");
 		return;
 	}
     window.location.href = '/index.html?value=' + inputValue;
   }
-
+  document.getElementById('searchlink').onclick = function() {
+    const inputValue = document.getElementById('inputValue').value;
+	if(inputValue == "")
+	{
+		alert("Empty Input");
+		return;
+	}
+    window.location.href = '/index.html?value=' + inputValue;
+  }
 const currentCss = document.getElementById('night__css');
 
 if (localStorage.getItem('mode') !== null) {
@@ -89,7 +97,7 @@ document.getElementById('day__sticky').addEventListener('click', function () {
   const input = toggleSwitch.querySelector("input");
 
   const toggleSwitchSticky = document.getElementById("toggle-switch2");
-const inputSticky = toggleSwitchSticky.querySelector("input");
+  const inputSticky = toggleSwitchSticky.querySelector("input");
 
   
   if(localStorage.getItem('voice') !== null){
