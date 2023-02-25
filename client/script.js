@@ -66,7 +66,7 @@ document.getElementById('day').addEventListener('click', function () {
 
 });
 
-//oncreate
+
 
 document.getElementById('night__sticky').addEventListener('click', function () {
   // If the day CSS is enabled, disable it and enable the night CSS
